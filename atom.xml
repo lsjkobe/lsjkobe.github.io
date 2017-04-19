@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-17T11:42:24.263Z</updated>
+  <updated>2017-04-19T14:51:03.134Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过Hexo+Github Pages搭建个人博客</title>
+    <link href="http://yoursite.com/2017/04/19/%E9%80%9A%E8%BF%87Hexo-Github-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/04/19/通过Hexo-Github-Pages搭建个人博客/</id>
+    <published>2017-04-19T14:04:48.000Z</published>
+    <updated>2017-04-19T14:51:03.134Z</updated>
+    
+    <content type="html"><![CDATA[<p>第一次写Blog,多多包涵！</p>
+<p>####大概步骤：</p>
+<ol>
+<li>搭建环境（安装NodeJS,安装Git,安装Hexo）</li>
+<li>配置Hexo</li>
+<li>配置Github</li>
+<li>发表Bolg</li>
+<li>Hexo主题</li>
+</ol>
+<p>####搭建环境</p>
+<ol>
+<li><p>#####安装NodeJS<br>windows下的NodeJS安装是比较方便的,到<a href="http://nodejs.org/" target="_blank" rel="external">NodeJS官网</a>下载安装<br>安装完成后可以在cmd中输入node -v查看是否安装成功，由于NodeJS已经集成了npm,所以可以通过npm -v查看安装版本信息</p>
+</li>
+<li><p>#####安装Git<br>因为需要发布到Github，所以需要安装Git<br>Git的官方<a href="https://git-scm.com/downloads" target="_blank" rel="external">下载地址</a><br>可以通过git –version查看版本信息</p>
+</li>
+<li><p>#####安装Hexo<br>新建一个目录用于安装Hexo,如D:\lsjkobe\blog<br>进入到这个目录下,这里说一个技巧,在当前目录下按住shift,然后点击鼠标右键,选择在此处打开命令窗口,可以在当前目录下快速进入到cmd<br>在命令行中输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="http://" alt="D:\lsjkobe\Blog\source\img\20170419_b1_1.PNG"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;第一次写Blog,多多包涵！&lt;/p&gt;
+&lt;p&gt;####大概步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;搭建环境（安装NodeJS,安装Git,安装Hexo）&lt;/li&gt;
+&lt;li&gt;配置Hexo&lt;/li&gt;
+&lt;li&gt;配置Github&lt;/li&gt;
+&lt;li&gt;发表Bolg&lt;/li&gt;
+&lt;li&gt;Hexo主
+    
+    </summary>
+    
+    
+      <category term="Hexo,Github Pages" scheme="http://yoursite.com/tags/Hexo-Github-Pages/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

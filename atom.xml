@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-19T14:51:03.134Z</updated>
+  <updated>2017-04-19T16:40:48.546Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,16 +20,14 @@
     <link href="http://yoursite.com/2017/04/19/%E9%80%9A%E8%BF%87Hexo-Github-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/04/19/通过Hexo-Github-Pages搭建个人博客/</id>
     <published>2017-04-19T14:04:48.000Z</published>
-    <updated>2017-04-19T14:51:03.134Z</updated>
+    <updated>2017-04-19T16:40:48.546Z</updated>
     
     <content type="html"><![CDATA[<p>第一次写Blog,多多包涵！</p>
 <p>####大概步骤：</p>
 <ol>
-<li>搭建环境（安装NodeJS,安装Git,安装Hexo）</li>
-<li>配置Hexo</li>
+<li>搭建环境（安装NodeJS,安装Git,安装Hexo,配置Hexo）</li>
 <li>配置Github</li>
-<li>发表Bolg</li>
-<li>Hexo主题</li>
+<li>发表文章</li>
 </ol>
 <p>####搭建环境</p>
 <ol>
@@ -41,7 +39,27 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><img src="http://" alt="D:\lsjkobe\Blog\source\img\20170419_b1_1.PNG"></p>
+<p><img src="\img\20170419_b1_1.PNG" alt=""><br>完成之后如图所示,然后在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo --save</div></pre></td></tr></table></figure></p>
+<p><img src="\img\20170419_b1_2.PNG" alt=""><br>安装完之后如图所示,这是打开目录已经有安装了很多文件,在命令行输入安装信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo -v</div></pre></td></tr></table></figure></p>
+<p><img src="\img\20170419_b1_3.PNG" alt=""></p>
+<ol>
+<li>#####配置Hexo<br>接着上面的操作，在命令行中依次输入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo init</div><div class="line">npm install</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>npm install会下载相关的依赖,这时候环境基本已经搭建完成<br>可以本地体验一下了<br>体验前先来熟悉一下hexo常见的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo s :启动本地服务器</div><div class="line">hexo g :生成网站静态文件到默认设置的 public 文件夹</div><div class="line">hexo d :自动生成网站静态文件，并部署到设定的仓库</div><div class="line">hexo new &quot;xx&quot; :新建一篇标题为xx的文章</div><div class="line">hexo clean :清除缓存文件 db.json 和已生成的静态文件 public</div></pre></td></tr></table></figure></p>
+<p>首先先在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g</div></pre></td></tr></table></figure></p>
+<p>生成网站静态文件<br>然后在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure></p>
+<p>这样就代表启动服务器成功,默认地址：<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a><br><img src="\img\20170419_b1_5.PNG" alt=""><br>在浏览器输入<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a><br><img src="\img\20170419_b1_4.PNG" alt=""></p>
+<p>####配置Github</p>
+<ol>
+<li>#####创建一个[youname].github.io的仓库<br>登录github后，点击页面右上角的[+]按钮<br>然后点击[New repository]新建一个仓库<br><img src="\img\20170419_b1_6.PNG" alt=""><br>进到仓库页面后按照图片的格式创建<br><img src="\img\20170419_b1_7.PNG" alt=""><br>创建成功会看到这样界面<br><img src="\img\20170419_b1_8.PNG" alt=""><br>这时候点击README或其它的随便创建一个文件,创建完成后点击Settings去设置github pages<br><img src="\img\20170419_b1_9.PNG" alt=""><br>如图红色框中选择master branch和点击save保存<br>这时候点击Code去拿到仓库地址<br><img src="\img\20170419_b1_10.PNG" alt=""><br>然后去到本地博客的根目录下<strong>站点配置文件</strong>_config.yml中配置,比如我的仓库地址是<a href="https://github.com/lsjkobe/lsjkobe.github.io.git,那么配置如下" target="_blank" rel="external">https://github.com/lsjkobe/lsjkobe.github.io.git,那么配置如下</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/lsjkobe/lsjkobe.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样hexo和github pages就关联起来了,这时候就可以通过在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p>这样就把博客部署到github pages上了,这时候可以通过<a href="https://yourName.github.io" target="_blank" rel="external">https://yourName.github.io</a> 访问到你的hexo博客了</p>
+<p>####发表文章<br>在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;Hello World&quot;</div></pre></td></tr></table></figure></p>
+<p>会在根目录\source_posts下新建一个叫Hello World的markdown格式的文件,这个就是新建的文章,可以通过markdown编辑器编辑你的内容,编辑完成后<br>可以重新在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p>这时候再打开<a href="https://yourName.github.io" target="_blank" rel="external">https://yourName.github.io</a> 就会能看到新发布的文章了</p>
 ]]></content>
     
     <summary type="html">
@@ -49,16 +67,18 @@
       &lt;p&gt;第一次写Blog,多多包涵！&lt;/p&gt;
 &lt;p&gt;####大概步骤：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;搭建环境（安装NodeJS,安装Git,安装Hexo）&lt;/li&gt;
-&lt;li&gt;配置Hexo&lt;/li&gt;
+&lt;li&gt;搭建环境（安装NodeJS,安装Git,安装Hexo,配置Hexo）&lt;/li&gt;
 &lt;li&gt;配置Github&lt;/li&gt;
-&lt;li&gt;发表Bolg&lt;/li&gt;
-&lt;li&gt;Hexo主
+&lt;li&gt;发表文章&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;####搭建环境&lt;/p
     
     </summary>
     
     
-      <category term="Hexo,Github Pages" scheme="http://yoursite.com/tags/Hexo-Github-Pages/"/>
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Github Pages" scheme="http://yoursite.com/tags/Github-Pages/"/>
     
   </entry>
   

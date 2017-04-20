@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-20T13:10:19.792Z</updated>
+  <updated>2017-04-20T14:37:27.837Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/04/19/%E9%80%9A%E8%BF%87Hexo-Github-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/04/19/通过Hexo-Github-Pages搭建个人博客/</id>
     <published>2017-04-19T14:04:48.000Z</published>
-    <updated>2017-04-20T13:10:19.792Z</updated>
+    <updated>2017-04-20T14:37:27.837Z</updated>
     
     <content type="html"><![CDATA[<p>第一次写Blog,多多包涵！</p>
 <h3 id="大概步骤："><a href="#大概步骤：" class="headerlink" title="大概步骤："></a>大概步骤：</h3><ol>
@@ -53,7 +53,7 @@
 <li><h4 id="创建一个-youname-github-io的仓库"><a href="#创建一个-youname-github-io的仓库" class="headerlink" title="创建一个[youname].github.io的仓库"></a>创建一个[youname].github.io的仓库</h4>登录github后，点击页面右上角的[+]按钮<br>然后点击[New repository]新建一个仓库<br><img src="\img\20170419_b1_6.PNG" alt=""><br>进到仓库页面后按照图片的格式创建<br><img src="\img\20170419_b1_7.PNG" alt=""><br>创建成功会看到这样界面<br><img src="\img\20170419_b1_8.PNG" alt=""><br>这时候点击README或其它的随便创建一个文件,创建完成后点击Settings去设置github pages<br><img src="\img\20170419_b1_9.PNG" alt=""><br>如图红色框中选择master branch和点击save保存<br>这时候点击Code去拿到仓库地址<br><img src="\img\20170419_b1_10.PNG" alt=""><br>然后去到本地博客的根目录下<strong>站点配置文件</strong>_config.yml中配置,比如我的仓库地址是<a href="https://github.com/lsjkobe/lsjkobe.github.io.git,那么配置如下" target="_blank" rel="external">https://github.com/lsjkobe/lsjkobe.github.io.git,那么配置如下</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/lsjkobe/lsjkobe.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>这样hexo和github pages就关联起来了,这时候就可以通过在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p>这样hexo和github pages就关联起来了,这时候就可以通过在命令行中输入:<br><strong>提醒：</strong>跑下面命令前需要先安装一个插件,通过命令：npm install hexo-deployer-git –save<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
 <p>这样就把博客部署到github pages上了,这时候可以通过<a href="https://yourName.github.io" target="_blank" rel="external">https://yourName.github.io</a> 访问到你的hexo博客了</p>
 <h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><p>在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;Hello World&quot;</div></pre></td></tr></table></figure></p>
 <p>会在根目录\source_posts下新建一个叫Hello World的markdown格式的文件,这个就是新建的文章,可以通过markdown编辑器编辑你的内容,编辑完成后<br>可以重新在命令行中输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>

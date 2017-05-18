@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-20T14:37:27.837Z</updated>
+  <updated>2017-05-18T14:02:18.922Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring解决Vue Axios跨域访问的问题</title>
+    <link href="http://yoursite.com/2017/05/18/Spring%E8%A7%A3%E5%86%B3Vue-Axios%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/05/18/Spring解决Vue-Axios跨域访问的问题/</id>
+    <published>2017-05-18T13:45:46.000Z</published>
+    <updated>2017-05-18T14:02:18.922Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么叫跨域"><a href="#什么叫跨域" class="headerlink" title="什么叫跨域"></a>什么叫跨域</h3><p>概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">URL                      说明       是否允许通信</div><div class="line">http://www.a.com/a.js</div><div class="line">http://www.a.com/b.js     同一域名下   允许</div><div class="line">http://www.a.com/lab/a.js</div><div class="line">http://www.a.com/script/b.js 同一域名下不同文件夹 允许</div><div class="line">http://www.a.com:8000/a.js</div><div class="line">http://www.a.com/b.js     同一域名，不同端口  不允许</div><div class="line">http://www.a.com/a.js</div><div class="line">https://www.a.com/b.js 同一域名，不同协议 不允许</div><div class="line">http://www.a.com/a.js</div><div class="line">http://70.32.92.74/b.js 域名和域名对应ip 不允许</div><div class="line">http://www.a.com/a.js</div><div class="line">http://script.a.com/b.js 主域相同，子域不同 不允许</div><div class="line">http://www.a.com/a.js</div><div class="line">http://a.com/b.js 同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</div><div class="line">http://www.cnblogs.com/a.js</div><div class="line">http://www.a.com/b.js 不同域名 不允许</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="通过jsonp跨域"><a href="#通过jsonp跨域" class="headerlink" title="通过jsonp跨域"></a>通过jsonp跨域</h2><p>维基百科的定义是：JSONP（JSON with Padding）是资料格式 JSON 的一种“使用模式”，可以让网页从别的网域要资料。<br>但是这种方法只支持Get请求，不支持post请求</p>
+<h2 id="通过CORS跨域"><a href="#通过CORS跨域" class="headerlink" title="通过CORS跨域"></a>通过CORS跨域</h2><p>CORS是一个W3C标准，全称是”跨域资源共享”，它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。</p>
+<p>首先先看一个场景,一般情况下没有设置跨域访问时，在Vue中定义了方法，触发这个方法时通过axios执行post请求时:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">axios.post(<span class="string">'http://localhost:8080/user/leoli/123456789/login'</span>).then(res =&gt; &#123;</div><div class="line">                console.log(res);</div><div class="line">            &#125;);</div></pre></td></tr></table></figure></p>
+<p>会报以下错误<br><img src="\img\20170518_a1_1.PNG" alt=""></p>
+<p>这时候可以通过配置cors的方式进行跨域访问，在Spring 4.2版本支持了CORS的方式</p>
+<ul>
+<li><p>配置的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;mvc:cors&gt;</div><div class="line">    &lt;mvc:mapping path=<span class="string">"/**"</span></div><div class="line">        allowed-origins=<span class="string">"*"</span></div><div class="line">        allowed-methods=<span class="string">"POST, GET, OPTIONS, DELETE, PUT"</span></div><div class="line">        allowed-headers=<span class="string">"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"</span></div><div class="line">        allow-credentials=<span class="string">"true"</span> /&gt;</div><div class="line">&lt;/mvc:cors&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注解的方式（@CrossOrigin）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@CrossOrigin(origins = <span class="string">"*"</span>, maxAge = 3600)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这时候再跑post请求就成功了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么叫跨域&quot;&gt;&lt;a href=&quot;#什么叫跨域&quot; class=&quot;headerlink&quot; title=&quot;什么叫跨域&quot;&gt;&lt;/a&gt;什么叫跨域&lt;/h3&gt;&lt;p&gt;概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;URL                      说明       是否允许通信&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/b.js     同一域名下   允许&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/lab/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/script/b.js 同一域名下不同文件夹 允许&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com:8000/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/b.js     同一域名，不同端口  不允许&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;https://www.a.com/b.js 同一域名，不同协议 不允许&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://70.32.92.74/b.js 域名和域名对应ip 不允许&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://script.a.com/b.js 主域相同，子域不同 不允许&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://a.com/b.js 同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.cnblogs.com/a.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http://www.a.com/b.js 不同域名 不允许&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+      <category term="Axios" scheme="http://yoursite.com/tags/Axios/"/>
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>通过Hexo+Github Pages搭建个人博客</title>
